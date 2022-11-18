@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+    <meta name="generator" content="Hugo 0.101.0" />
+    <title>Input Data</title>
+
+    <link rel="stylesheet" href="style/bootstrap.min.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="style/register.css" rel="stylesheet" />
+  </head>
+
+  <body class="text-center">
+    <main class="form-signin w-100 m-auto">
+      <form id="register-form">
+        <img class="mb-4" src="assets/logo.png" alt="" width="72" />
+        <h1 class="h3 mb-4 fw-normal">Input Data</h1>
+
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="name" placeholder="Yourname" required />
+          <label for="name">Nama</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="number" class="form-control" id="age" placeholder="age" required />
+          <label for="age">Umur (Tahun)</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="number" class="form-control" id="height" placeholder="height" required />
+          <label for="height">Tinggi (cm)</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="number" class="form-control" id="weight" placeholder="weight" required />
+          <label for="weight">Berat (Kg)</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="number" class="form-control" id="betis" placeholder="betis" required />
+          <label for="betis">Panjang Betis (cm)</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="jenis-gerakan" placeholder="Jenis Gerakan" required />
+          <label for="betis">Jenis Gerakan</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="Laki-laki" checked />
+          <label class="form-check-label" for="flexRadioDefault1"> Laki-laki </label>
+        </div>
+        <div class="form-check form-check-inline mb-3">
+          <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="Perempuan" />
+          <label class="form-check-label" for="flexRadioDefault2"> Perempuan </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+      </form>
+    </main>
+    <script src="script/bootstrap.bundle.min.js"></script>
+    <script src="script/register.js"></script>
+  </body>
+</html>

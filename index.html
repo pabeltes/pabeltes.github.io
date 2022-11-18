@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+    <meta name="generator" content="Hugo 0.104.2" />
+    <title>Hamstring App</title>
+
+    <link rel="stylesheet" href="style/bootstrap.min.css" />
+    <!-- Custom styles for this template -->
+    <link href="style/dashboard.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Hamstring Test<img style="height: 25px" class="ms-2" src="assets/logo.png" alt="" /></a>
+    </header>
+
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar ms-auto me-2 mb-2 mb-md-0">
+          <a href="edit.html">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Edit Data</button>
+          </a>
+        </div>
+        <div class="btn-toolbar mb-2 me-2 mb-md-0">
+          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="exportpdf()">Export PDF</button>
+        </div>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="exportTableToExcel('logData')">Export</button>
+        </div>
+      </div>
+
+      <div class="d-flex mb-2">
+        <button class="btn btn-primary" onclick="connectSerial()">Connect</button>
+        <select class="ms-2 form-select" aria-label="Default select example" style="width: 200px" id="baud" onchange="localStorage.baud = this.value">
+          <option value="110">110</option>
+          <option value="300">300</option>
+          <option value="600">600</option>
+          <option value="1200">1200</option>
+          <option value="2400">2400</option>
+          <option value="4800">4800</option>
+          <option value="9600">9600</option>
+          <option value="14400">14400</option>
+          <option value="19200">19200</option>
+          <option value="38400">38400</option>
+          <option value="57600">57600</option>
+          <option value="115200">115200</option>
+          <option value="128000">128000</option>
+          <option value="256000">256000</option>
+        </select>
+        <div id="messagePort"></div>
+      </div>
+      <button class="btn btn-primary" onclick="startt()">Mulai</button>
+      <button id="repb" class="btn btn-warning ms-1" onclick="repss()">Repetisi</button>
+      <button class="btn btn-danger ms-1" onclick="stopp()">Selesai</button>
+      <a href=""><button class="btn btn-danger ms-1">Refresh</button></a>
+      <h4 class="mt-2">REPETISI : <span id="rep" class="text-warning"></span></h4>
+
+      <div id="utama">
+        <div class="container">
+          <div class="row">
+            <div class="col-4 ps-0 pe-0 ms-0 me-0 d-flex">
+              <div id="plot-left" style="width: 50%"></div>
+              <div id="plot-right" style="width: 50%"></div>
+            </div>
+            <div class="col-8 ps-0 pe-0 ms-0 me-0">
+              <div id="chart" style="width: 100%"></div>
+            </div>
+          </div>
+
+          <table class="table mt-3">
+            <tr>
+              <td>Nama</td>
+              <td name="nameUser">Yourname</td>
+            </tr>
+            <tr>
+              <td>Umur</td>
+              <td name="ageUser">Age</td>
+            </tr>
+            <tr>
+              <td>Tinggi</td>
+              <td name="heightUser">Height</td>
+            </tr>
+            <tr>
+              <td>Berat</td>
+              <td name="weightUser">Weight</td>
+            </tr>
+            <tr>
+              <td>Panjang Betis</td>
+              <td name="betis">Weight</td>
+            </tr>
+            <tr>
+              <td>Jenis Kelamin</td>
+              <td name="genderUser">Gender</td>
+            </tr>
+            <tr>
+              <td>Jenis Gerakan</td>
+              <td name="jenis-gerakan">Jenis Gerakan</td>
+            </tr>
+          </table>
+        </div>
+        <div class="container">
+          <table class="table" id="logData">
+            <tr hidden>
+              <td>Nama</td>
+              <td name="nameUser">Yourname</td>
+            </tr>
+            <tr hidden>
+              <td>Umur</td>
+              <td name="ageUser">Age</td>
+            </tr>
+            <tr hidden>
+              <td>Tinggi</td>
+              <td name="heightUser">Height</td>
+            </tr>
+            <tr hidden>
+              <td>Berat</td>
+              <td name="weightUser">Weight</td>
+            </tr>
+            <tr hidden>
+              <td>Panjang Betis</td>
+              <td name="betis">Weight</td>
+            </tr>
+            <tr hidden>
+              <td>Jenis Kelamin</td>
+              <td name="genderUser">Gender</td>
+            </tr>
+            <tr hidden>
+              <td>Jenis Gerakan</td>
+              <td name="jenis-gerakan">Jenis Gerakan</td>
+            </tr>
+            <tr hidden></tr>
+            <tr hidden>
+              <th>TimeStamp</th>
+              <th>Repetisi</th>
+              <th>Kaki Kiri (N)</th>
+              <th>Kaki Kanan (N)</th>
+              <th>Torsi Kiri (N.m)</th>
+              <th>Torsi Kanan (N.m)</th>
+              <th>Asimetri (N)</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="script/jquery-3.6.1.js"></script>
+    <script src="script/plotly-latest.min.js"></script>
+    <script src="script/table2excel.js"></script>
+    <script src="script/bootstrap.bundle.min.js"></script>
+    <script src="script/dist/html2pdf.bundle.min.js"></script>
+    <script src="script/main.js"></script>
+  </body>
+</html>
