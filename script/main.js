@@ -418,10 +418,10 @@ function exportpdf() {
   // window.html2pdf = html2pdf;
   var element = document.getElementById("utama");
   var opt = {
-    margin: 0.3,
+    margin: 2,
     filename: "file.pdf",
     image: { type: "jpeg", quality: 1 },
-    html2canvas: { scale: 2, width: 1200 },
+    html2canvas: { scale: 2, width: 1150 },
     jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
   };
   html2pdf().set(opt).from(element).save();
