@@ -52,7 +52,7 @@ var layoutLine = {
     t: 50,
     pad: 4,
   },
-  showlegend: false,
+  showlegend: true,
 };
 
 var layoutLeft = {
